@@ -1,0 +1,13 @@
+Functionality doc: planning out functionality for app
+---------------------------------------
+
+Non-logged-in users will see a log-in prompt.
+
+Users have 2 levels of access, employee and admin.
+
+Employee users can view a list of all other employees but will not see any personal data.
+They will only see names, phone numbers, email, job title, and picture.
+Employees will be able to see and update their own personal data.
+
+Admins can see all data, and have the ability to create new users as well as edit all employee data.
+Admins can create other admins, employee-level users can only be created if there is an associated employee entry.
