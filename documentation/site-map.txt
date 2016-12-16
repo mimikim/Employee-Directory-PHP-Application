@@ -18,8 +18,6 @@ Employees: list of employees,
     employees cannot click into profile?? (restrict access so that they cant just go to direct url)
     can search and sort table? (angularjs? maybe later down the road)
 
-
-
 Reports: admin access only, can generate reports.
     maybe later down the road, add ability to export generated report to downloadable file
 
