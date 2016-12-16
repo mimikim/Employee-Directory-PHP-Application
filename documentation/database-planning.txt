@@ -25,13 +25,17 @@ Table: employees (record of all employees) 12 cols
 'picture', varchar. Picture of employee
 'notes', text. Notes regarding employee
 
+(should these be included in this table, since records exist below)
+'salary'
+'department'
+
 
 Table: jobs (record of all job changes for employees) 3 cols
 -----------------------------
 'jid', int auto increment, primary key
 'employee_id', int employee id, foreign key for employee table
 'job_title', varchar. Job title
-'job_department', varchar. Job department
+'job_department', id, foreign key for department
 'effective_date', date, date of title change
 
 
