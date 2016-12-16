@@ -1,0 +1,34 @@
+Site structure/menu structure
+---------------------------------------
+
+Log Out
+Settings: update user info
+    - update password
+    - update email
+    - update first name
+    - update last name
+
+
+Dashboard: homepage. mostly empty for employees, see data/reports for admin
+
+My Info: user can see their associated employee info
+    (eg: name, address, phone, job title, salary, department, etc)
+    ** should they be able to edit on this page, or should it all be in settings? **
+
+Employees: list of employees,
+    admins can click into each profile to see more info
+        - admins can view individualized reports here (?? maybe?)
+    employees cannot click into profile?? (restrict access so that they cant just go to direct url)
+    can search and sort table? (angularjs? maybe later down the road)
+
+Reports: admin access only, can generate reports.
+    maybe later down the road, add ability to export generated report to downloadable file
+
+Admin: overall data/admin dashboard (should this be its own section?)
+    - see employee salary history
+    - see employee promotions
+    - employment history
+
+User Management:
+    - see all users
+    - add/delete
