@@ -1,0 +1,71 @@
+Functionality doc: planning out functionality for app
+---------------------------------------
+
+Non-logged-in users will see a log-in prompt.
+
+Users have 2 levels of access, employee and admin.
+
+Employee users can view a list of all other employees but will not see any personal data.
+They will only see names, phone numbers, email, job title, and picture.
+Employees will be able to see and update their own personal data.
+
+Admins can see all data, and have the ability to create new users as well as edit all employee data.
+Admins can create other admins, employee-level users can only be created if there is an associated employee entry.
+
+Reports using Chart.js can be generated for admins
+
+---------------------------------------
+Classes: methods it needs to do
+
+functions
+    contains: autoloader
+
+Database (all db connection functions)
+    constructor: on construct, connect to db (mysqli or pdo)
+    connect_to_db: connects to db
+    run_query: run sql query
+    check_query: confirms query is valid
+
+Sessions (login/logout sessions)
+    log_in
+    log_off
+    check_if_logged_in
+
+Users (finds all users)
+    find_all_users: lists all users found in "admin_table"
+    add_user: add a new user
+    delete_user
+
+Employee
+    get employee record by name, id, birth date,
+    update employee data
+    display employee data
+
+
+
+---------------------------------------
+
+App File Structure: planning out the best file structure
+
+.htaccess (blocks access to certain folders)
+
+app/
+    js/
+    scss/
+    css/
+    images/
+    uploads/
+data/ (stores sql db)
+    .sql
+documentation/ (stores documentation)
+config/ (stores config.php)
+    config.php
+classes/ (all class files)
+includes/ (functions?)
+partials/ (header, footer, nav, etc)
+
+index.php (admin page)
+login.php
+logout.php
+employees.php (list of all employees)
+users.php (list of all users)
