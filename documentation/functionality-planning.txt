@@ -25,6 +25,7 @@ Database (all db connection functions)
     connect_to_db: connects to db
     run_query: run sql query
     check_query: confirms query is valid
+    sanitize_query: escapes special characters, makes query safe
 
 Sessions (login/logout sessions)
     log_in
