@@ -1,5 +1,14 @@
 <?php ob_start(); ?>
 <?php require_once( '/includes/init.php' ); ?>
+<?php
+// if not signed in, and you are not already on the login page
+if( (FILENAME != 'login.php') ) {
+    if( !$session->is_logged_in() ) {
+        // make them sign in
+        redirect('login');
+    }
+}
+?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="en">
 <head>
@@ -8,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Directory PHP Application</title>
     <link rel="stylesheet" href="dist/css/vendor/foundation.min.css" />
+    <link rel="stylesheet" href="dist/css/style.min.css" />
 </head>
 <body>
-<?php include('partials/menu.php'); ?>
+<?php if(FILENAME != 'login.php') { include('partials/menu.php'); } ?>

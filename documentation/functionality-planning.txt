@@ -21,16 +21,19 @@ functions
     contains: autoloader
 
 Database (all db connection functions)
-    constructor: on construct, connect to db (mysqli or pdo)
+    constructor: on construct, connect to db (pdo)
     connect_to_db: connects to db
     run_query: run sql query
-    check_query: confirms query is valid
-    sanitize_query: escapes special characters, makes query safe
+    bind_value (accepts object? iterates over and binds each entry?)
+    execute_query
+    display results
+        display single row (eg: single employee)
+        display multiple rows (eg: all employees)
 
 Sessions (login/logout sessions)
     log_in
     log_off
-    check_if_logged_in
+    is_logged_in
 
 Users (finds all users)
     find_all_users: lists all users found in "admin_table"
@@ -50,7 +53,7 @@ App File Structure: planning out the best file structure
 
 .htaccess (blocks access to certain folders)
 
-app/
+assets/
     js/
     scss/
     css/

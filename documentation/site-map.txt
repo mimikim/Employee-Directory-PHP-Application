@@ -25,6 +25,12 @@ Admin: overall data/admin dashboard (should this be its own section?)
     - see employee salary history
     - see employee promotions
     - employment history
+    - create department
+    - create job
+    - create employee
+    - edit employee
+    - delete employee
+        (undesired but have the ability to. will notify that admins should mark terminated employees as "terminated"
 
 User Management:
     - see all users

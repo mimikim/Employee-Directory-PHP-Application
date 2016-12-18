@@ -10,8 +10,8 @@
                         <li>
                             <a href="#">Mimi Kim</a>
                             <ul class="menu" style="text-align: left;">
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#">Log Out</a></li>
+                                <li><a href="user-profile">Settings</a></li>
+                                <li><a href="logout">Log Out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -21,10 +21,12 @@
         <div style="background: #5eb4ed;">
             <div class="row">
                 <ul class="col-large-12 columns" style="list-style:none; margin: 10px auto;">
-                    <li style="display: inline-block; margin-right: 40px;"><a href="index.php" style="color:#fff;">Dashboard</a></li>
-                    <li style="display: inline-block; margin-right: 40px;"><a href="employees.php" style="color:#fff;">Employee</a></li>
-                    <li style="display: inline-block; margin-right: 40px;"><a href="reports.php" style="color:#fff;">Reports</a></li>
-                    <li style="display: inline-block;"><a href="users.php" style="color:#fff;">Users</a></li>
+                    <li style="display: inline-block; margin-right: 40px;"><a href="index" style="color:#fff;">Dashboard</a></li>
+                    <li style="display: inline-block; margin-right: 40px;"><a href="employees" style="color:#fff;">Employees</a></li>
+                    <?php if( $session->access_level == 1 ) : ?>
+                    <li style="display: inline-block; margin-right: 40px;"><a href="reports" style="color:#fff;">Reports</a></li>
+                    <li style="display: inline-block;"><a href="users" style="color:#fff;">Users</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

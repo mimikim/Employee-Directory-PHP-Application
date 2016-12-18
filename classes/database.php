@@ -10,17 +10,17 @@ class Database {
     private $user = DB_USER;
     private $pass = DB_PASS;
 
-    // query statement
-    private $statement;
-
-    // database connection
-    public $connection;
+    private $statement; // query statement
+    private $connection; // database connection
+    private $query_results = []; // variable to hold query results
+    public $query_success = false; // stores whether query was successfully run
 
     // constructor, run on instantiation
     public function __construct() {
         $this->connect_to_db();
     }
 
+    // connect to db
     public function connect_to_db() {
         // data source name
         $dsn = sprintf('mysql:dbname=%s;host=%s', $this->dbname, $this->host);
@@ -33,24 +33,86 @@ class Database {
         }
     }
 
-    // prepare, bind, and execute query.
-    public function run_query( $sql ) {
-        // prepare statement
+    // prepare statement
+    private function prepare_query( $sql ) {
         $this->statement = $this->connection->prepare( $sql );
     }
 
     // bind value to a corresponding parameter in the sql statement (data type string by default)
-    public function bind_value( $parameter, $value, $data_type = PDO::PARAM_STR ) {
-        $this->statement->bindValue( $parameter, $value, $data_type );
+    private function bind_value( $bind_array ) {
+        foreach( $bind_array as $key => $value ) {
+            $data_type = $this->get_data_type($value);
+            $this->statement->bindValue( $key, $value, $data_type );
+        }
+    }
+
+    private function get_data_type( $value ) {
+        switch ($value) {
+            case is_int($value):
+                $type = PDO::PARAM_INT;
+                break;
+            case is_bool($value):
+                $type = PDO::PARAM_BOOL;
+                break;
+            case is_null($value):
+                $type = PDO::PARAM_NULL;
+                break;
+            default:
+                $type = PDO::PARAM_STR;
+        }
+        return $type;
     }
 
     // execute statement
-    public function execute_query() {
+    private function execute_query() {
         // return true on success, false on failure
         return $this->statement->execute();
     }
 
+    // display results
+    public function return_results( $is_single = false ) {
+        if ( $is_single ) {
+            $results = $this->query_results = $this->statement->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $results = $this->query_results = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $results;
+    }
 
+    // check if results exist
+    public function result_exists() {
+        if( !empty($this->query_results) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // prepare, bind, and execute query. returns success or fail message
+    public function run_query( $sql, $bind_array = null ) {
+
+        // return variable
+        $return = null;
+
+        // prepare statement
+        $this->prepare_query( $sql );
+
+        // bind values if provided
+        if( !empty($bind_array) ) {
+            $this->bind_value( $bind_array );
+        }
+
+        // execute
+        $execute = $this->execute_query();
+        if( $execute ) {
+            $return = 'Query successfully run';
+            $this->query_success = true;
+        } else {
+            $return = 'Query failed to execute';
+            $this->query_success = false;
+        }
+        //return $return;
+    }
 
 }
 
