@@ -1,8 +1,7 @@
 Bugs and Things to Test for:
 --------------------------------------
 
-- separate code with html (separate db interactions with presentation logic)
-
+- separate code from html (separate db interactions from presentation logic)
 
 - check input validating/sanitizing
 
