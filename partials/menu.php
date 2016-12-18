@@ -8,7 +8,7 @@
                 <div class="title-bar-right">
                     <ul class="dropdown menu" data-dropdown-menu>
                         <li>
-                            <a href="#">Mimi Kim</a>
+                            <a href="#"><?php echo $session->display_name; ?></a>
                             <ul class="menu" style="text-align: left;">
                                 <li><a href="user-profile">Settings</a></li>
                                 <li><a href="logout">Log Out</a></li>
