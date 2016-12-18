@@ -14,5 +14,3 @@ If you would like to plug this application into your own server, please remember
 - MySQL
 - Foundation 6
 - jQuery
-- jQuery UI
-- Angular JS ?
