@@ -1,6 +1,9 @@
 Bugs and Things to Test for:
 --------------------------------------
 
+- separate code with html (separate db interactions with presentation logic)
+
+
 - check input validating/sanitizing
 
 - what happens if employee/user has the same name as someone else (duplicate records)
