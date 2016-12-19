@@ -1,6 +1,6 @@
 <div data-sticky-container>
-    <div data-sticky data-options="marginTop: 0;" style="width: 100%;">
-        <div class="title-bar" style="width:100%">
+    <div data-sticky data-options="marginTop: 0;" class="navigation">
+        <div class="title-bar">
             <div class="row">
                 <div class="title-bar-left">
                     Employee Directory Application
@@ -20,13 +20,16 @@
         </div>
         <div style="background: #5eb4ed;">
             <div class="row">
-                <ul class="col-large-12 columns" style="list-style:none; margin: 10px auto;">
-                    <li style="display: inline-block; margin-right: 40px;"><a href="index" style="color:#fff;">Dashboard</a></li>
-                    <li style="display: inline-block; margin-right: 40px;"><a href="employees" style="color:#fff;">Employees</a></li>
+                <ul class="col-large-12 columns sub-nav">
+                    <li><a href="index" title="Return to Dashboard">Dashboard</a></li>
+                    <li><a href="employees" title="See Employees">Employees</a></li>
                     <?php if( $session->access_level == 1 ) : ?>
-                    <li style="display: inline-block; margin-right: 40px;"><a href="reports" style="color:#fff;">Reports</a></li>
-                    <li style="display: inline-block;"><a href="users" style="color:#fff;">Users</a></li>
+                    <li><a href="reports" title="See Reports">Reports</a></li>
+                    <li><a href="users" title="See Users">Users</a></li>
                     <?php endif; ?>
+                    <li class="float-right">
+                        <a href="https://github.com/mimikim/Employee-Directory-PHP-Application" class="icon-font-github" target="_blank" title="View Code on Github">Github</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -16,8 +16,11 @@ if( (FILENAME != 'login.php') ) {
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Directory PHP Application</title>
-    <link rel="stylesheet" href="dist/css/vendor/foundation.min.css" />
-    <link rel="stylesheet" href="dist/css/style.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor/foundation.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor/datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/vendor/ico-embedded.css" />
+    <link rel="stylesheet" href="assets/css/style.min.css" />
 </head>
 <body>
 <?php if(FILENAME != 'login.php') { include('partials/menu.php'); } ?>
+<div class="wrapper">

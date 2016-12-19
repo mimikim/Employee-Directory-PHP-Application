@@ -1,8 +1,7 @@
 <?php include('partials/header.php');
-
 // if already logged in, go to index
 if( $session->is_logged_in() ) {
-    redirect('index.php');
+    redirect('index');
 }
 
 // if form has been submitted,
@@ -34,7 +33,6 @@ if(isset($_POST['submit'])) {
     $username = '';
     $password = '';
 } ?>
-
 <div class="login-form-container">
     <div class="row">
         <div class="columns">
