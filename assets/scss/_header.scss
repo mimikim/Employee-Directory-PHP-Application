@@ -1,0 +1,25 @@
+.navigation {
+    width: 100%;
+
+    .title-bar {
+        width: 100%;
+    }
+}
+
+.sub-nav {
+    list-style:none;
+    margin: 10px auto;
+
+    li {
+        display: inline-block;
+        margin-right: 30px;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+
+    a {
+        color: $white;
+    }
+}
