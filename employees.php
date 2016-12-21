@@ -1,59 +1,118 @@
 <?php include('partials/header.php'); ?>
 
-    <div class="row" style="padding-top:50px;">
+    <div class="row">
         <div class="medium-12 columns">
             <h3>Employees</h3>
-            <div class="row small-up-2 medium-up-3 large-up-4">
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
-                <div class="column">
-                    <img class="thumbnail" src="http://placehold.it/550x550">
-                    <h5>My Site</h5>
-                </div>
+            <?php if( is_admin() ) : ?>
+            <div class="table-functions">
+                <a class="button success" href="#">Add Employee</a>
             </div>
-
+            <?php endif; ?>
+            <table class="hover stack" id="employee-table">
+                <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name <small>(Last, First)</small></th>
+                    <th>Job Title</th>
+                    <th>Department</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, Jane</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Engineering</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Marketing</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Marketing</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Marketing</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Doe, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Marketing</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><img class="thumbnail" src="http://placehold.it/50x50"></td>
+                        <td valign="top"><a href="employee-profile?user=">Alpha, John</a></td>
+                        <td valign="top">Web Engineer</td>
+                        <td valign="top">Marketing</td>
+                    </tr>
+                </tbody>
+            </table>
+            <?php if( is_admin() ) : ?>
+            <div class="table-buttons"></div>
+            <?php endif; ?>
         </div>
 
     </div>

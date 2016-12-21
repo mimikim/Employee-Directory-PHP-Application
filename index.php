@@ -1,31 +1,6 @@
 <?php include('partials/header.php'); ?>
 <div class="row">
     <div class="medium-12 columns">
-
-        <?php
-
-        /*
-        while( $row = $stmt->fetchAll(PDO::FETCH_ASSOC) ) {
-            echo '<pre>' . print_r( $row, true ) . '</pre>';
-        }*/
-
-        $sql = 'SELECT * FROM ed_admin_user WHERE id = :id';
-        //$sql = 'INSERT INTO ed_admin_user (id, username) VALUES (:id, :username)';
-        //$sql = 'UPDATE ed_admin_user SET password = :password WHERE id = :id ';
-        $bind_array = array(
-            ':id' => 555,
-            //':username' => 'test'
-            //':password' => 'password'
-        );
-
-        $return = $database->run_query( $sql, $bind_array );
-
-        if ( $database->query_success ) {
-            $variable = $database->return_results( true );
-            print_r( $variable );
-        }
-
-        ?>
         <div class="blog-post">
             <h3>Awesome blog post title <small>3/6/2016</small></h3>
             <img class="thumbnail" src="http://placehold.it/850x350">
