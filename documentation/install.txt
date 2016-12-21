@@ -1,0 +1,21 @@
+Creating Config.php
+-----------------------------------------
+
+on db class construct, check db connection.
+
+Fail Cases:
+- empty database (db and login exists and works but db is empty)
+    then create login (case 1)
+
+- unknown database (1049), access denied for user (1045), or no host known (2002)
+    then send to install db setup (case 0)
+
+
+
+Set up guide:
+--------------------------------------
+
+based off of wordpress setup-config code, switch statement to determine steps.
+
+step 1: db cred form, on success go to step 2
+step 2: create first user as admin

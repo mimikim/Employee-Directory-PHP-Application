@@ -40,3 +40,4 @@ Admin Settings:
     maybe add ability to customize info seen on dashboard, and info seen first on reports?
         - would just be a separate screen with checkboxes or maybe a select? draggable boxes?
         - but would require a separate "admin_meta" table to save
+

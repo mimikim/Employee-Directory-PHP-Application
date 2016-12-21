@@ -12,6 +12,8 @@ Employees will be able to see and update their own personal data.
 Admins can see all data, and have the ability to create new users as well as edit all employee data.
 Admins can create other admins, employee-level users can only be created if there is an associated employee entry.
 
+but employee entries in the db can be created without an associated user.
+
 Reports using Chart.js can be generated for admins
 
 ---------------------------------------
