@@ -1,25 +1,57 @@
 .navigation {
+  width: 100%;
+
+  @include media($medium) {
+
+  }
+
+  a {
+    color: $white;
+  }
+
+  .title-bar {
     width: 100%;
+  }
 
-    .title-bar {
-        width: 100%;
+  .title-bar-right {
+    > ul {
+      display: inline-block;
     }
-}
+  }
 
-.sub-nav {
-    list-style:none;
-    margin: 10px auto;
+  .submenu {
+    a {
+      color: #1779ba;
+    }
+  }
 
-    li {
+  &--sub {
+    background: $blue-light;
+
+    ul {
+      margin: 10px auto;
+      list-style:none;
+
+      li {
         display: inline-block;
         margin-right: 30px;
 
         &:last-of-type {
-            margin-right: 0;
+          margin-right: 0;
         }
-    }
+      }
 
-    a {
-        color: $white;
+      a { color: $white; }
     }
+  }
+}
+
+.menu {
+  &.vertical {
+    > li {
+      &:hover, &:active, &:focus {
+        background: rgba( $black, 0.1 );
+      }
+    }
+  }
 }

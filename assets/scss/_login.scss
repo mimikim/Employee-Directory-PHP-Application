@@ -1,22 +1,22 @@
 .login-form-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 0 15px;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 0 15px;
 
-    label {
-        font-weight: bold;
-    }
+  label {
+    font-weight: bold;
+  }
 }
 
 #login-form {
-    margin-top: 20px;
+  margin-top: 20px;
 
-    input {
-        font-weight: normal;
-    }
+  input {
+    font-weight: normal;
+  }
 }

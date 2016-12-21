@@ -1,5 +1,6 @@
 // globals
 @import 'variables';
+@import 'mixins';
 
 // page styles
 @import 'header';
@@ -7,3 +8,6 @@
 
 // specific modules
 @import 'login';
+@import 'tables';
+@import 'install';
+

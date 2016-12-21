@@ -1,0 +1,21 @@
+.install-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  margin: auto;
+  padding: 0 15px;
+  text-align: center;
+  max-width: 800px;
+
+  .message {
+    padding-bottom: 40px;
+    font-size: 25px;
+  }
+
+  .submit {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

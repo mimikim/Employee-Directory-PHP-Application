@@ -1,3 +1,14 @@
+html, body {
+  height: 100%;
+}
+
 .wrapper {
-    padding: 50px 0;
+  min-height: calc(100% - 106px);
+  margin: 0 auto -45px;
+  padding: 25px 0 95px;
+}
+
+footer {
+  height: 45px;
+  border-top: 1px solid #eee;
 }
