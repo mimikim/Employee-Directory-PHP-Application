@@ -1,9 +1,12 @@
 <?php
-require_once('/config/config.php');
+$config_path = realpath(__DIR__ . '/../config/config.php');
+if( file_exists($config_path) ) {
+    // include only if file exists, otherwise errors will be thrown!
+    require_once('/config/config.php');
+}
 
 // create Database class which will contain all methods relating to the DB
 class Database {
-
     // db creds
     private $host = DB_HOST;
     private $dbname = DB_NAME;
@@ -35,7 +38,7 @@ class Database {
             }
         } catch( PDOException $error ) {
             $error_code = $error->getCode();
-            //echo $error_code;
+            // echo $error_code;
             // if db connection fails because of the following codes, run install
             if( $error_code == 1049 || $error_code == 1045 || $error_code == 2002 ) {
                 redirect('config/install');

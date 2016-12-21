@@ -1,9 +1,8 @@
 <?php
 // installation class
 class SetUp {
-
     // create config.php file
-    static function create_config_file($host, $user, $pass, $name) {
+    static function create_config_file($name, $user, $pass, $host) {
         $fp=fopen('config.php','w');
         $content = "<?php\r\n// defines database connection constants\r\n";
         $content .= "define('DB_HOST','" . addcslashes( $host, "\\'" ) . "');\r\n";

@@ -93,7 +93,7 @@ switch( $step ) :
         // if constants have not been defined (if link is directly accessed)
         if( !defined('DB_HOST') || !defined('DB_NAME') || !defined('DB_USER') || !defined('DB_PASS') ) {
             // send back to step 1
-            //redirect('install.php?step=1');
+            redirect('install.php?step=1');
         }
 
         if( isset($_POST['submit']) ) {
