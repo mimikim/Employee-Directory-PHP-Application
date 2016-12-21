@@ -28,8 +28,34 @@ class Database {
         // connect to database
         try {
             $this->connection = new PDO($dsn, $this->user, $this->pass);
+
+            // check if empty, if empty run user set-up script
+            if( $this->check_if_empty() ) {
+                redirect('config/install?step=2');
+            }
         } catch( PDOException $error ) {
-            die( 'Connection failed: ' . $error->getMessage() );
+            $error_code = $error->getCode();
+            //echo $error_code;
+            // if db connection fails because of the following codes, run install
+            if( $error_code == 1049 || $error_code == 1045 || $error_code == 2002 ) {
+                redirect('config/install');
+            } else {
+                die( 'Connection failed' );
+            }
+        }
+    }
+
+    // check if the database is empty
+    private function check_if_empty() {
+        $sql = "SELECT * FROM information_schema.tables WHERE table_schema = '" . DB_NAME . "'";
+        $this->run_query($sql);
+        $results = $this->return_results();
+
+        if( empty( $results ) ) {
+            return true;
+        } else {
+            //print_r( $results );
+            return false;
         }
     }
 
@@ -90,7 +116,6 @@ class Database {
 
     // prepare, bind, and execute query. returns success or fail message
     public function run_query( $sql, $bind_array = null ) {
-
         // return variable
         $return = null;
 

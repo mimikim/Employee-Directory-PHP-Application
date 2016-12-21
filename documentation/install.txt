@@ -1,9 +1,16 @@
 Creating Config.php
 -----------------------------------------
 
+php form validation, no js required (although the site needs js for datatables.....)
+
+list of mysql error codes: http://dev.mysql.com/doc/refman/5.7/en/error-handling.html
+
 on db class construct, check db connection.
 
 Fail Cases:
+- no config file exists (always check in header)
+    then redirect to install
+
 - empty database (db and login exists and works but db is empty)
     then create login (case 1)
 
@@ -17,5 +24,5 @@ Set up guide:
 
 based off of wordpress setup-config code, switch statement to determine steps.
 
-step 1: db cred form, on success go to step 2
+step 1: db cred form, on success create config file, go to step 2
 step 2: create first user as admin

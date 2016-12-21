@@ -12,9 +12,9 @@ function classAutoLoader($class) {
         die("This file name {$class}.php was not found.");
     }
 }
-
 // registers function as __autoload
 spl_autoload_register('classAutoLoader');
+
 
 // redirect not-logged in users
 function redirect( $location ) {
@@ -48,17 +48,40 @@ function restrict_access() {
 }
 
 
-/* Filter Functions */
+/* Filter and Validation Functions */
 
 function filter_special_char( $input ) {
     return filter_var( $input, FILTER_SANITIZE_ENCODED );
 }
 
-// validate input functions
+// is valid email? returns true/false
 function validate_email( $email ) {
-    if( !filter_var( $email, FILTER_VALIDATE_EMAIL ) === false ) {
-        return true;
-    } else {
-        return false;
-    }
+    return filter_var( $email, FILTER_VALIDATE_EMAIL );
 }
+
+// validate pattern, returns true or false
+function validate_pattern( $pattern, $input ) {
+    $pattern = array('options' => array('regexp' => $pattern));
+    return filter_var($input, FILTER_VALIDATE_REGEXP, $pattern);
+}
+
+// is alphabetic?
+function validate_alphabetic( $input ) {
+    return validate_pattern("/^[a-zA-Z]+$/", $input);
+}
+
+// is alphanumeric?
+function validate_alphanumeric( $input ) {
+    return validate_pattern("/^[a-zA-Z0-9]+$/", $input);
+}
+
+function validate_password( $input ) {
+    return validate_pattern("/^[a-zA-Z0-9!@#$%^&*]{8,}+$/", $input);
+}
+
+// send email
+function send_email( $contents ) {
+
+}
+
+

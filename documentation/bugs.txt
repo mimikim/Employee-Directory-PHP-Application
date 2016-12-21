@@ -9,3 +9,10 @@ Bugs and Things to Test for:
 
 - email script for when you update your password (or any other alerts.)
     - alerts for admin?
+
+
+
+--------------------------------------
+TO-Do in the future:
+- javascript heavy form validation?
+- re-write in angular

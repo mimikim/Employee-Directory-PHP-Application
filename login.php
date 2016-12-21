@@ -74,9 +74,6 @@ if(isset($_POST['submit'])) {
             </div>
         </div>
     </form>
-    <div>
-        <small>First time here? Register a login here.</small>
-    </div>
 </div>
 
 <?php include('partials/footer.php'); ?>
