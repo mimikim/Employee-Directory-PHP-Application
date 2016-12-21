@@ -10,7 +10,6 @@ var jshint       = require('gulp-jshint'),
     changed      = require('gulp-changed'),
     autoprefixer = require('gulp-autoprefixer');
 
-
 // Compile Our Sass
 gulp.task('sass', function() {
     return gulp.src('assets/scss/*.scss')
