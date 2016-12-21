@@ -1,4 +1,7 @@
-<?php include('partials/header.php'); ?>
+<?php include('partials/header.php');
+
+restrict_access();
+?>
     <div class="row">
         <div class="medium-12 columns">
 
