@@ -1,12 +1,12 @@
 <?php
 // User class
 class User {
-    protected static $db_table = "ed_admin_user";
+    protected static $db_table = "ed_user";
 
     // get all users in the table
     public static function find_all_users() {
         global $database;
-        $sql = 'SELECT id, username, email, access_level, first_name, last_name FROM ' . self::$db_table;
+        $sql = 'SELECT id, username, access_level, first_name, last_name FROM ' . self::$db_table;
         $database->run_query($sql);
         if( $database->query_success ) {
             $results = $database->return_results();
@@ -40,6 +40,12 @@ class User {
         $database->run_query( $sql, $bind_array );
         $results = $database->return_results( true );
         return $results;
+    }
+
+    // update user info
+    public function update_user() {
+        global $database;
+
     }
 
 }

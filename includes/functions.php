@@ -79,6 +79,8 @@ function validate_password( $input ) {
     return validate_pattern("/^[a-zA-Z0-9!@#$%^&*]{8,}+$/", $input);
 }
 
+
+
 // send email
 function send_email( $contents ) {
 

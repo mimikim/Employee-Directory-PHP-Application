@@ -1,8 +1,11 @@
 <?php
+//
+
 require_once('../includes/functions.php');
 require_once('../classes/setup.php');
 // installation process will be done using switch statement to track steps
 $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 1;
+$setup = new SetUp;
 ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="en">
@@ -16,7 +19,8 @@ $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 1;
 </head>
 <body>
 <div class="row">
-    <div class="columns install-container">
+    <div class="columns">
+    <div class="install-container">
 <?php
 switch( $step ) :
     case 1:
@@ -37,7 +41,6 @@ switch( $step ) :
                     $conn = new PDO($dsn, $user, $pass);
 
                     // create config file (which defines db constants)
-                    $setup = new SetUp;
                     $setup::create_config_file($dbname, $user, $pass, $host);
 
                     // on success, move on to switch case 2
@@ -55,7 +58,7 @@ switch( $step ) :
         }
 ?>
         <div class="message"><?php echo $message; ?></div>
-        <form id="install-setup" action="" method="post">
+        <form id="install-setup" class="setup-form" action="" method="post">
             <table class="unstriped">
                 <tr>
                     <td align="left">Database Name</td>
@@ -91,53 +94,82 @@ switch( $step ) :
 
     case 2:
         // if constants have not been defined (if link is directly accessed)
+        if( file_exists(__DIR__ . '/config.php') ) {
+            require_once('../classes/database.php');
+        }
         if( !defined('DB_HOST') || !defined('DB_NAME') || !defined('DB_USER') || !defined('DB_PASS') ) {
             // send back to step 1
             redirect('install.php?step=1');
         }
 
         if( isset($_POST['submit']) ) {
-            $error = false;
-            $username = trim($_POST['username']);
-            $password = trim($_POST['password']);
-            $email = trim($_POST['email']);
-
-            // if email is not valid
-            if( !validate_email($email) ) {
-                $email_error = 'Please enter a valid email address';
-                $error = true;
+            if(isset($_SESSION['form_submitted'])) {
+                die('You have already submitted the form.');
             }
+            else {
+                $error = false;
+                $username = trim($_POST['username']);
+                $password = trim($_POST['password']);
+                $email = trim($_POST['email']);
+                $first_name = trim($_POST['first_name']);
+                $last_name = trim($_POST['last_name']);
 
-            if( !validate_alphanumeric($username) ) {
-                $username_error = 'Username must be alphanumeric';
-                $error = true;
-            }
+                // if email is not valid
+                if( !validate_email($email) ) {
+                    $email_error = 'Please enter a valid email address';
+                    $error = true;
+                }
+                if( !validate_alphanumeric($username) ) {
+                    $username_error = 'Username can only contain letters or numbers';
+                    $error = true;
+                }
+                if( !validate_password($password) ) {
+                    $password_error = 'Password must be at least 8 characters and contain letters, numbers, or symbols.';
+                    $error = true;
+                }
+                if( !validate_alphabetic($first_name) || !validate_alphabetic($last_name) ) {
+                    $error_message = 'Must be alphabetical';
+                    $error = true;
+                }
 
-            if( !validate_password($password) ) {
-                $password_error = 'Password must be at least 8 characters and contain letters, numbers, or symbols.';
-                $error = true;
-            }
 
-            // if no errors
-            if( !$error ) {
-                $message = '';
+                // if no errors
+                if( !$error ) {
+                    $message = '';
+                    $setup->username = $username;
+                    $setup->password = $password;
+                    $setup->email = $email;
+                    $setup->first_name = $first_name;
+                    $setup->last_name = $last_name;
 
-                // create login!
+                    // create tables
+                    $setup::create_tables();
 
+                    // create first user
+                    $user_creation_success = $setup->create_first_user();
 
-                // redirect to login page...
-                //redirect('login');
+                    if( $user_creation_success ) {
+                        // send email
+                        //$setup->send_mail();
+                        // redirect to login page...
+                        redirect('../login');
+                    } else {
+                        $message = "Failed to create user";
+                    }
 
-            } else {
-                $message = "Please fix errors below and re-submit!";
+                } else {
+                    $message = "Please fix errors below and re-submit!";
+                }
+                $_SESSION['form_submitted'] = TRUE;
             }
         } else {
-            $username = $password = $email = $email_error = $username_error = $password_error = '';
-            $message = "Database Connection Successful!<br>Let's create your log-in.";
+            $username = $password = $email = $first_name = $last_name = '';
+            $email_error = $username_error = $password_error = $error_message = '';
+            $message = "Database Connection Successful!<br>Let's create your log-in and employee profile.";
         }
 ?>
         <div class="message"><?php echo $message; ?></div>
-        <form id="install-setup" action="" method="post">
+        <form id="install-setup" class="setup-form" action="" method="post">
             <table class="unstriped">
                 <tr>
                     <td valign="top" align="left">Username</td>
@@ -167,6 +199,24 @@ switch( $step ) :
                     </td>
                 </tr>
                 <tr>
+                    <td align="left">First Name</td>
+                    <td>
+                        <input type="text" required name="first_name" placeholder="Enter Your First Name" value="<?php echo htmlentities($first_name); ?>" style="margin-bottom:0;">
+                        <?php if( !empty($error_message) ) : ?>
+                            <div class="callout alert"><?php echo $error_message; ?></div>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Last Name</td>
+                    <td>
+                        <input type="text" required name="last_name" placeholder="Enter Your Last Name" value="<?php echo htmlentities($last_name); ?>" style="margin-bottom:0;">
+                        <?php if( !empty($error_message) ) : ?>
+                            <div class="callout alert"><?php echo $error_message; ?></div>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         You will be sent these credentials to the email address provided above.
                     </td>
@@ -177,7 +227,9 @@ switch( $step ) :
             </div>
         </form>
 <?php endswitch; ?>
-    </div>
+    </div></div>
 </div>
+<script src="../assets/vendor/jquery.js"></script>
+<script src="../assets/js/installation.js"></script>
 </body>
 </html>

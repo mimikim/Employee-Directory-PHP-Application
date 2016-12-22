@@ -1,45 +1,43 @@
 Employee Directory Database: planning out database structure
 
 
-Table: ed_admin_user (users: employee and admin) 5 cols
+Table: ed_user (users: employee and admin)
 -----------------------------
 'id', int, auto increment, primary key. ID of admin users
 'username', varchar. Username of admin user
 'password', varchar. Password of user
-
 'access_level', int. Access level ( 0: view only. 1: view and edit )
-'employee_id', int. Employee ID associated with user. Foreign key for Employees table.
+'employee_id', int. Employee ID associated with user.
 
 
-
-Table: ed_employee (record of all employees) 12 cols
+Table: ed_employee (record of all employees)
 -----------------------------
 'employee_id', int, auto increment, primary key. Employee ID
 'first_name', varchar. First name of employee
 'last_name', varchar. Last name of employee
-'picture', varchar. Picture of employee
+'email', varchar. Email of user
 'start_date', date. Date of employment start
 'end_date', date. End of employment end (if no end date, then status "active")
 'birth_date', date. Employee birth date
 'phone_number', char(10). Employee phone number
 'address', text. Address of employee
 'notes', text. Notes regarding employee
-'email', varchar. Email of user
+'picture', varchar. Picture of employee
 
 
-Table: ed_job (record of all job changes for employees) 3 cols
+Table: ed_job (record of all job changes for employees)
 -----------------------------
 'jid', int auto increment, primary key
-'employee_id', int employee id, foreign key for employee table
+'employee_id', int employee id
 'job_title', varchar. Job title
-'job_department', id, foreign key for department
+'job_department', id
 'effective_date', date, date of title change
 
 
 Table: ed_salary (record of all salary changes for employees) 4 cols
 -----------------------------
 'sid', int auto increment, primary key.
-'employee_id', int employee id, foreign key for employee table
+'employee_id', int employee id
 'salary', int salary
 'effective_date', date, date of salary change
 

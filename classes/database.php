@@ -1,8 +1,10 @@
 <?php
 $config_path = realpath(__DIR__ . '/../config/config.php');
+//echo $config_path;
 if( file_exists($config_path) ) {
     // include only if file exists, otherwise errors will be thrown!
-    require_once('/config/config.php');
+    //require_once('/config/config.php');
+    require_once($config_path);
 }
 
 // create Database class which will contain all methods relating to the DB
@@ -28,9 +30,14 @@ class Database {
         // data source name
         $dsn = sprintf('mysql:dbname=%s;host=%s', $this->dbname, $this->host);
 
+        $opt = array(
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            // other options
+        );
+
         // connect to database
         try {
-            $this->connection = new PDO($dsn, $this->user, $this->pass);
+            $this->connection = new PDO($dsn, $this->user, $this->pass, $opt);
 
             // check if empty, if empty run user set-up script
             if( $this->check_if_empty() ) {
@@ -93,7 +100,7 @@ class Database {
     }
 
     // execute statement
-    private function execute_query() {
+    public function execute_query() {
         // return true on success, false on failure
         return $this->statement->execute();
     }
@@ -119,8 +126,7 @@ class Database {
 
     // prepare, bind, and execute query. returns success or fail message
     public function run_query( $sql, $bind_array = null ) {
-        // return variable
-        $return = null;
+        $this->query_success = false;
 
         // prepare statement
         $this->prepare_query( $sql );
@@ -139,7 +145,12 @@ class Database {
             $return = 'Query failed to execute';
             $this->query_success = false;
         }
-        //return $return;
+        return $return;
+    }
+
+    // return last inserted id
+    public function get_insert_id() {
+        return $this->connection->lastInsertId();
     }
 
 }
