@@ -4,9 +4,10 @@
 
 ## Description
 
-This is an Employee Directory application built with OOP practices. It queries and displays all employees stored in a MySQL database. It features a password-protected admin section with CRUD operations.
+This is an Employee Directory application built with OOP practices. It queries and displays all employees stored in a MySQL database, as well as generate reports based on the information stored. It features a password-protected admin section with CRUD operations.
 
-If you would like to plug this application into your own server, please remember to update the database connection information with your associated info. I have provided a sample SQL export file that you can import into your database, if you would like to work with some existing data!
+Database connection information is defined in /config/config.php. If this file does not exist or the connection information is not valid, the application will direct you to an installation prompt wherein you can fill out database credentials as well as create an initial log-in for yourself (admin). A sample SQL file is provided if you wish to simply plug and play with existing data.
+
 
 ## Dependencies
 
