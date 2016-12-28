@@ -12,11 +12,10 @@
                         <li><a href="index" title="Return to Dashboard">Dashboard</a></li>
                         <li><a href="employee-profile" title="See My Info">My Info</a></li>
                         <li><a href="employees" title="See Employees">Employees</a></li>
-                        <li><a href="admin" title="">Admin</a></li>
                     </ul>
                     <ul class="dropdown menu" data-dropdown-menu>
                         <li>
-                            <a href="#"><?php echo $session->display_name; ?></a>
+                            <a href="#"><?php echo $_SESSION['display_name']; ?></a>
                             <ul class="menu" style="text-align: left;">
                                 <li><a href="user-profile">Settings</a></li>
                                 <li><a href="help">Help</a></li>
@@ -30,13 +29,11 @@
         <div class="navigation--sub">
             <div class="row">
                 <ul class="col-large-12 columns">
-
                     <?php if( is_admin() ) : ?>
                     <li><a href="reports" title="See Reports">Reports</a></li>
-                    <li><a href="users" title="See Users">Users</a></li>
+                    <li><a href="user-list" title="See Users">Users</a></li>
                     <li><a href="">Departments</a></li>
                     <?php endif; ?>
-
                 </ul>
             </div>
         </div>

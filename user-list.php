@@ -1,5 +1,4 @@
 <?php include('partials/header.php');
-
 restrict_access();
 $all_users = User::find_all_users();
 ?>

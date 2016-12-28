@@ -11,10 +11,14 @@ if(isset($_POST['submit'])) {
 
     if( !empty($username) && !empty($password) ) {
         // method to check database user
-        $user_found = User::verify_user($username, $password);
+        $user_data = User::verify_user($username, $password);
 
-        if($user_found){
-            $session->login($user_found);
+        if($user_data){
+            // get employee data based off employee_id
+            $employee_data = Employee::find_employee_by_id($user_data['employee_id']);
+            $user_data['display_name'] = ($employee_data['first_name'] . ' ' . $employee_data['last_name']);
+
+            $session->login($user_data);
             redirect('index');
         } else {
             $message = 'Your password or username is incorrect!';
@@ -27,7 +31,6 @@ if(isset($_POST['submit'])) {
             $pass_error = 'Password is required';
         }
     }
-
 } else {
     $message = $user_error = $pass_error = '';
     $username = '';

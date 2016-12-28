@@ -30,7 +30,7 @@ class Database {
         $dsn = sprintf('mysql:dbname=%s;host=%s', $this->dbname, $this->host);
 
         $opt = array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            //PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         );
 
         // connect to database

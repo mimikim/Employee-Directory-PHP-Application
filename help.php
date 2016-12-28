@@ -1,5 +1,5 @@
 <?php include('partials/header.php');
-if( $session->access_level == 1 ) {
+if( $_SESSION['access_level'] == 1 ) {
     $level = 'admin';
 } else {
     $level = 'employee';

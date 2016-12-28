@@ -11,8 +11,6 @@ Bugs and Things to Test for:
     - alerts for admin?
 
 
-
 --------------------------------------
 TO-Do in the future:
-- javascript heavy form validation?
 - re-write in angular

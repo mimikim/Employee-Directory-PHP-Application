@@ -3,9 +3,6 @@
 class Session {
 
     private $signed_in;
-    public $access_level;
-    public $user_id;
-    public $display_name;
 
     public function __construct() {
         // on website load, start session
@@ -13,14 +10,8 @@ class Session {
 
         // check if the user is logged in
         if( isset($_SESSION['user']) ) {
-            $this->user_id = $_SESSION['user'];
-            $this->access_level = $_SESSION['access_level'];
-            $this->display_name = $_SESSION['display_name'];
             $this->signed_in = true;
         } else {
-            unset($this->user_id);
-            unset($this->access_level);
-            unset($this->display_name);
             $this->signed_in = false;
         }
     }
@@ -33,9 +24,9 @@ class Session {
     // function to log in user
     public function login($user) {
         // assign $user_id to current session, and to User Class' id property
-        $this->user_id = $_SESSION['user'] = $user['id'];
-        $this->access_level = $_SESSION['access_level'] = $user['access_level'];
-        $this->display_name = $_SESSION['display_name'] = ($user['first_name'] . ' ' . $user['last_name']);
+        $_SESSION['user'] = $user['id'];
+        $_SESSION['access_level'] = $user['access_level'];
+        $_SESSION['display_name'] = $user['display_name'];
         $this->signed_in = true;
     }
 
@@ -45,9 +36,6 @@ class Session {
         unset($_SESSION['user']);
         unset($_SESSION['access_level']);
         unset($_SESSION['display_name']);
-        unset($this->user_id);
-        unset($this->access_level);
-        unset($this->display_name);
         $this->signed_in = false;
     }
 

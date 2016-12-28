@@ -1,6 +1,7 @@
 <?php include('partials/header.php'); ?>
 <div class="row">
     <div class="medium-12 columns">
+
         <div class="blog-post">
             <h3>Awesome blog post title <small>3/6/2016</small></h3>
             <img class="thumbnail" src="http://placehold.it/850x350">

@@ -10,9 +10,10 @@ They will only see names, phone numbers, email, job title, and picture.
 Employees will be able to see and update their own personal data.
 
 Admins can see all data, and have the ability to create new users as well as edit all employee data.
-Admins can create other admins, employee-level users can only be created if there is an associated employee entry.
 
-but employee entries in the db can be created without an associated user.
+Users can only be created if there is an associated employee entry, but employee entries in the db can be created without an associated user.
+
+On install, a prompt will create the first user/employee entry.
 
 Reports using Chart.js can be generated for admins
 

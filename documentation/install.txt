@@ -12,10 +12,10 @@ Fail Cases:
     then redirect to install
 
 - empty database (db and login exists and works but db is empty)
-    then create login (case 1)
+    then create login (case 2)
 
 - unknown database (1049), access denied for user (1045), or no host known (2002)
-    then send to install db setup (case 0)
+    then send to install db setup (case 1)
 
 
 

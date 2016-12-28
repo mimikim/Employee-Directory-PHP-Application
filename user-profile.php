@@ -1,27 +1,19 @@
 <?php include('partials/header.php');
-/*
- * check logged-in user's permission level
- *
- * if admin-level
- *  check for query string
- *  if query string exists,
- *      get user data based off the user's id #
- *  if no query string, just display current user's profile
- *
- * else if not admin,
- *  just display the current user's profile page regardless of query string
- *
- */
 $user_profile = [];
 $has_query = has_query_string();
 
+// check for query string
 if( is_admin() && $has_query ) {
+    // if admin and has query string
     $user_id = $_GET['user'];
     $user_profile = User::find_user_by_id($user_id);
 } else {
-    $user_id = $session->user_id;
+    // otherwise, just return logged in user
+    $user_id = $_SESSION['user'];
     $user_profile = User::find_user_by_id($user_id);
 }
+
+//print_r($user_profile);
 
 /*
  * if submitted, check to see if any of the inputs have been changed by
@@ -103,6 +95,7 @@ if(isset($_POST['submit'])) {
                         </label>
                     </div>
                 </div>
+
                 <div class="row">
                     <fieldset class="columns">
                         <legend>Change Access Level</legend>
@@ -110,12 +103,11 @@ if(isset($_POST['submit'])) {
                         <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Admin</label>
                     </fieldset>
                 </div>
+                <?php if( $user_profile['id'] != $_SESSION['user'] ) : ?>
+
+                <?php endif; ?>
             </div>
         </div>
-
-        <?php if( is_admin() && $user_profile['id'] != $session->user_id ) : ?>
-
-        <?php endif; ?>
 
         <div class="row" style="margin:40px auto;">
             <div class="columns">
