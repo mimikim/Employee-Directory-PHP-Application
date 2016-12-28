@@ -3,7 +3,6 @@ $config_path = realpath(__DIR__ . '/../config/config.php');
 //echo $config_path;
 if( file_exists($config_path) ) {
     // include only if file exists, otherwise errors will be thrown!
-    //require_once('/config/config.php');
     require_once($config_path);
 }
 
@@ -31,8 +30,7 @@ class Database {
         $dsn = sprintf('mysql:dbname=%s;host=%s', $this->dbname, $this->host);
 
         $opt = array(
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            // other options
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         );
 
         // connect to database
@@ -41,14 +39,18 @@ class Database {
 
             // check if empty, if empty run user set-up script
             if( $this->check_if_empty() ) {
-                redirect('config/install?step=2');
+                if( basename($_SERVER['PHP_SELF']) != 'install.php' ) {
+                    redirect('config/install?step=2');
+                }
             }
         } catch( PDOException $error ) {
             $error_code = $error->getCode();
             // echo $error_code;
             // if db connection fails because of the following codes, run install
             if( $error_code == 1049 || $error_code == 1045 || $error_code == 2002 ) {
-                redirect('config/install');
+                if( basename($_SERVER['PHP_SELF']) != 'install.php' ) {
+                    redirect('config/install?step=2');
+                }
             } else {
                 die( 'Connection failed' );
             }
@@ -56,15 +58,13 @@ class Database {
     }
 
     // check if the database is empty
-    private function check_if_empty() {
+    public function check_if_empty() {
         $sql = "SELECT * FROM information_schema.tables WHERE table_schema = '" . DB_NAME . "'";
         $this->run_query($sql);
         $results = $this->return_results();
-
         if( empty( $results ) ) {
             return true;
         } else {
-            //print_r( $results );
             return false;
         }
     }

@@ -1,11 +1,19 @@
 <?php
-//
-
 require_once('../includes/functions.php');
 require_once('../classes/setup.php');
+$setup = new SetUp;
+
+// config file exists and a login exists, redirect to homepage
+if( file_exists(__DIR__ . '/config.php') ) {
+    require_once('../classes/database.php');
+    if( !$setup->is_db_empty() ) {
+        // if database is not empty
+        redirect('../index');
+    }
+}
+
 // installation process will be done using switch statement to track steps
 $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 1;
-$setup = new SetUp;
 ?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="en">
@@ -94,9 +102,7 @@ switch( $step ) :
 
     case 2:
         // if constants have not been defined (if link is directly accessed)
-        if( file_exists(__DIR__ . '/config.php') ) {
-            require_once('../classes/database.php');
-        }
+        //if( file_exists(__DIR__ . '/config.php') ) { require_once('../classes/database.php'); }
         if( !defined('DB_HOST') || !defined('DB_NAME') || !defined('DB_USER') || !defined('DB_PASS') ) {
             // send back to step 1
             redirect('install.php?step=1');
@@ -131,7 +137,6 @@ switch( $step ) :
                     $error_message = 'Must be alphabetical';
                     $error = true;
                 }
-
 
                 // if no errors
                 if( !$error ) {

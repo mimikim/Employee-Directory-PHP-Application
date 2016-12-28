@@ -98,7 +98,7 @@ VALUES ( :first_name, :last_name, :email )';
             ':last_name'    => $this->last_name,
             ':email'        => $this->email
         );
-        //echo $database->run_query($insert_employee, $employee_value_array);
+        $database->run_query($insert_employee, $employee_value_array);
         $employee_entry = $database->get_insert_id();
 
         $sql = 'INSERT INTO ' .  self::$user_table . ' SET username = :username,
@@ -111,7 +111,7 @@ VALUES ( :first_name, :last_name, :email )';
             ':password'     => $this->password,
             ':access_level' => 1
         );
-        //echo $database->run_query($sql, $user_value_array);
+        $database->run_query($sql, $user_value_array);
 
         return $database->query_success;
     }
@@ -133,6 +133,18 @@ VALUES ( :first_name, :last_name, :email )';
         mail($to, $subject, $message);
     }
 
+    public function is_db_empty() {
+        global $database;
+        $sql = "SELECT * FROM information_schema.tables WHERE table_schema = '" . DB_NAME . "'";
+        $database->run_query($sql);
+        $results = $database->return_results();
+        // if is empty, return true (is empty)
+        if( empty($results) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
 
