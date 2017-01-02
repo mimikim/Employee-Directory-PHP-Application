@@ -4,6 +4,15 @@ class Employee {
     protected static $db_table = "ed_employee";
 
     // find all employees
+    public static function find_all_employees() {
+        global $database;
+        $sql = 'SELECT * FROM ' . self::$db_table;
+        $database->run_query($sql);
+        if( $database->query_success ) {
+            $results = $database->return_results();
+        }
+        return $results;
+    }
 
 
     // find employee by id
@@ -17,5 +26,8 @@ class Employee {
 
     // update employee data
 
+    // create employee
+
+    // delete employee
 
 }

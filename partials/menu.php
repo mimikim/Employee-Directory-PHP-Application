@@ -11,7 +11,7 @@
                     <ul class="menu">
                         <li><a href="index" title="Return to Dashboard">Dashboard</a></li>
                         <li><a href="employee-profile" title="See My Info">My Info</a></li>
-                        <li><a href="employees" title="See Employees">Employees</a></li>
+                        <li><a href="employee-list" title="See Employees">Employees</a></li>
                     </ul>
                     <ul class="dropdown menu" data-dropdown-menu>
                         <li>

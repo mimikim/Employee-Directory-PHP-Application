@@ -10,7 +10,12 @@ Bugs and Things to Test for:
 - email script for when you update your password (or any other alerts.)
     - alerts for admin?
 
+- check if install script works with an imported db (should i provide a config.php file, or should it be generated...)
+
+-
+
 
 --------------------------------------
 TO-Do in the future:
-- re-write in angular
+- re-write in angular (or something similar)
+- re-write using an actual php framework?
