@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<?php require_once( '/includes/init.php' ); ?>
+<?php require_once( 'includes/init.php' ); ?>
 <?php
 // if not signed in, and you are not already on the login page
 if( (FILENAME != 'login.php') ) {
