@@ -1,7 +1,7 @@
 # Employee Directory PHP Application
 
 ## Demo
-[Demo the Application on Heroku](https://employee-directory-app.herokuapp.com)
+[View Demo on Heroku](https://employee-directory-app.herokuapp.com)
 
 ## Description
 
