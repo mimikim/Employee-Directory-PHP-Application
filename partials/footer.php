@@ -12,6 +12,7 @@
 <script src="assets/vendor/foundation/what-input.js"></script>
 <script src="assets/vendor/foundation/foundation.min.js"></script>
 <script src="assets/vendor/datatables/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 <script src="assets/js/all.min.js"></script>
 </body>
 </html>

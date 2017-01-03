@@ -32,7 +32,7 @@
                     <?php if( is_admin() ) : ?>
                     <li><a href="reports" title="See Reports">Reports</a></li>
                     <li><a href="user-list" title="See Users">Users</a></li>
-                    <li><a href="">Departments</a></li>
+                    <li><a href="department-list">Departments</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

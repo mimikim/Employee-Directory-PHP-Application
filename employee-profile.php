@@ -18,13 +18,60 @@ if(isset($_POST['submit'])) {
     echo 'submitted';
 
 }
-
 ?>
     <div class="row">
-        <div class="medium-12 columns">
-            <h3>Employee Name</h3>
-            <?php print_r($employee_profile); ?>
+        <div class="column">
+            <pre><?php #print_r($employee_profile); ?></pre>
+        </div>
+        <div class="medium-3 columns">
+            <div>
+                <div style="width:200px; height:200px; max-width: 100%; border:2px solid black;"></div>
+            </div>
+            <hr>
+            <div>
+                Job Title
+                <br>
+                Job Department
+                <br>
+                Salary
+            </div>
+            <hr>
+            <div>
+                Hire Date
+                <br>
+                End Date
+            </div>
+        </div>
+        <div class="medium-9 columns">
+            <h3>
+                <?php echo $employee_profile['first_name'] . ' ' . $employee_profile['last_name']; ?>
+                <br>
+                <small>Job Title</small>
+            </h3>
+            <hr>
+            <div>
+                Employee Number
+                <br>
+                Nickname
+                <br>
+                Birth Date
+                <br>
+                Gender
+            </div>
+            <hr>
+            <div>
+                Email
+                <br>
+                Phone
+                <br>
+                Address
+            </div>
+            <hr>
+            <div>
+                Notes
+            </div>
         </div>
     </div>
+
 
 <?php include('partials/footer.php'); ?>

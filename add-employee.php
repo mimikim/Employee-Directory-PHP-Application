@@ -8,6 +8,11 @@
 ?>
     <div class="row">
         <div class="medium-12 columns">
+
+            if no Department, you cannot create employee.
+            <br>
+            if no Job, you cannot create employee.
+
             <h3>Create Employee</h3>
 
             <form id="profile-form" action="" method="post">
