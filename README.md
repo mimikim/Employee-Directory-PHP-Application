@@ -2,6 +2,7 @@
 
 ## Demo
 [View Demo on Heroku](https://employee-directory-app.herokuapp.com)
+
 Demo Login: admin/password
 
 ## Description
